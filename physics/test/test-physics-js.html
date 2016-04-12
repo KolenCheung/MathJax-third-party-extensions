@@ -2,86 +2,19 @@
 <html>
 <head>
 	<meta charset="utf-8"/>
-<script type="text/x-mathjax-config">MathJax.Ajax.config.path.Contrib="https://cdn.mathjax.org/mathjax/contrib",MathJax.Hub.Register.StartupHook("TeX Jax Ready",function(){MathJax.Hub.Insert(MathJax.InputJax.TeX.Definitions.macros,{cancel:["Extension","cancel"],bcancel:["Extension","cancel"],xcancel:["Extension","cancel"],cancelto:["Extension","cancel"]})}),MathJax.Hub.Config({TeX:{equationNumbers:{autoNumber:"AMS"},extensions:["[Contrib]/physics/physics.js","[Contrib]/siunitx/siunitx.js"]}});</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full"></script>
+<script type="text/x-mathjax-config"> MathJax.Ajax.config.path["Contrib"]="https://ickc.github.io/MathJax-third-party-extensions/"; MathJax.Hub.Register.StartupHook("TeX Jax Ready",function (){MathJax.Hub.Insert(MathJax.InputJax.TeX.Definitions.macros,{cancel: ["Extension","cancel"], bcancel: ["Extension","cancel"], xcancel: ["Extension","cancel"], cancelto: ["Extension","cancel"]});}); MathJax.Hub.Config({tex2jax:{inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}, TeX:{equationNumbers:{autoNumber: "AMS"}, extensions: ["[Contrib]/physics/physics.js","[Contrib]/siunitx/siunitx.js"]}});</script><script type="text/javascript"src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full"></script>
 	<link type="text/css" rel="stylesheet" href="https://ickc.github.io/multimarkdown-latex-css/css/multimarkdown-latex-lmodern.css"/>
-	<link type="text/css" rel="stylesheet" href="https://ickc.github.io/multimarkdown-latex-css/fonts/fonts.css"/>
-	<meta name="latexheaderlevel" content="2"/>
-	<meta name="thmd" content="chapter"/>
-	<title>LaTeX Physics Package in MathJax</title>
-	<meta name="subtitle" content="Mimicking Some of the Commands in LaTeX Physics Package"/>
-	<meta name="keywords" content="Physics Package"/>
-	<meta name="revision" content="0.11"/>
+	<title>Testing physics.js</title>
+	<meta name="keywords" content="test, physics package"/>
+	<meta name="revision" content="0.1"/>
 	<meta name="language" content="English"/>
 	<meta name="author" content="Kolen Cheung"/>
 	<meta name="email" content="khcheung@berkeley.edu"/>
 	<meta name="affiliation" content="University of California, Berkeley"/>
-	<meta name="copyright" content="2015-2016 Kolen Cheung  
+	<meta name="copyright" content="2016 Kolen Cheung  
 All Rights Reserved."/>
-	<meta name="tocd" content="5"/>
-	<meta name="secd" content="5"/>
 </head>
 <body>
-
-<!-- \begin{comment} --><div class="TOC">
-
-
-<ul>
-<li><a href="#latexphysicspackage">LaTeX Physics Package</a></li>
-<li><a href="#somecommandsarenotworking">Some Commands are not Working</a></li>
-<li><a href="#organization">Organization</a></li>
-<li><a href="#tests">Tests</a></li>
-</ul>
-</div>
-
-<!-- \end{comment} -->
-
-<h1 id="latexphysicspackage">LaTeX Physics Package</h1>
-
-<p>This extension is to mimics <a href="http://www.ctan.org/pkg/physics">the LaTeX Physics Package</a> in MathJax. For details, see <a href="https://ickc.github.io/MathJax-third-party-extensions/physics/">the GitHub pages</a> and <a href="https://github.com/ickc/MathJax-third-party-extensions">the GitHub repository</a> of this extension.</p>
-
-<h1 id="somecommandsarenotworking">Some Commands are not Working</h1>
-
-<p>The following commands in the Physics Package is not implemented yet:</p>
-
-<ul>
-<li>All Matrix Macros</li>
-<li>So far everything done here is by string substitution. Whenever commands involving the following cannot be done simply by string substitution and hence not working:
-
-<ol>
-<li><code>*</code> modified command</li>
-<li><code>[]</code> (or <code>()</code>) is involved</li>
-<li>variable no. of arguments</li>
-</ol></li>
-<li>Examples of commands that doesn&#8217;t work: <code>\dv</code>: has all the properties mentioned above</li>
-</ul>
-
-<p>As I mentioned, everything done so far is by string substitution only. Some hints are given in <a href="https://github.com/mathjax/MathJax-third-party-extensions/pull/16">Pull Request#16&#8212;MathJax-third-party-extensions</a> but my skill is too limited to understand how the above cases should be handled. Feel free to improve it though.</p>
-
-<h1 id="organization">Organization</h1>
-
-<p><code>physics.xlsx</code> is the master file.</p>
-
-<ul>
-<li>Columns A-L are copied to <a href="test/tables.md">test/tables.md</a></li>
-<li>Columns M-V are copied to <a href="unpacked/physics.js">unpacked/physics.js</a></li>
-<li>Columns M-V excluding column O are copied to <a href="test/macro.js">test/macro.js</a></li>
-</ul>
-
-<p><code>License.js</code> is used to store the license that should be appended to the <code>.js</code> files.</p>
-
-<p>Other files are built automatically by <code>physics.sh</code>. <a href="http://fletcherpenney.net/multimarkdown/download/">MultiMarkdown</a>, UglifyJS2, LaTeX are assumed. I used it on Mac and have no idea if the way my bash script is written is OS agnostic or not.</p>
-
-<h1 id="tests">Tests</h1>
-
-<p>A few tests are given:</p>
-
-<ul>
-<li><a href="https://ickc.github.io/MathJax-third-party-extensions/physics/">Using MathJax&#8217;s CDN</a> <a href="#fn:1" id="fnref:1" title="see footnote" class="footnote">[1]</a></li>
-<li><a href="https://ickc.github.io/MathJax-third-party-extensions/physics/test/test-physics-js.html">Using this repository</a></li>
-<li><a href="https://ickc.github.io/MathJax-third-party-extensions/physics/test/test-physics-js-unpacked.html">Using this repository (unpacked version)</a></li>
-<li><a href="https://ickc.github.io/MathJax-third-party-extensions/physics/test/macro.html">As a Macro</a> <a href="#fn:2" id="fnref:2" title="see footnote" class="footnote">[2]</a></li>
-<li><a href="https://ickc.github.io/MathJax-third-party-extensions/physics/index.pdf">As a PDF generated by LaTeX</a>: this is the reference file using the LaTeX&#8217;s the Physics Package. You can compare the LaTeX output and HTML output and you will see which one is working now or yet to be implemented.</li>
-</ul>
 
 <table>
 <colgroup>
@@ -740,21 +673,6 @@ All Rights Reserved."/>
 </tr>
 </tbody>
 </table>
-
-<div class="footnotes">
-<hr />
-<ol>
-<li id="fn:1">
-<p>i.e. only the one pushed to MathJax&#8217;s official third parties extensions repository is tested <a href="#fnref:1" title="return to article" class="reversefootnote">&#160;&#8617;</a></p>
-</li>
-
-<li id="fn:2">
-<p>Rather than as an extension loaded separately, this one is a macro put in the file directly <a href="#fnref:2" title="return to article" class="reversefootnote">&#160;&#8617;</a></p>
-</li>
-
-</ol>
-</div>
-
 
 </body>
 </html>

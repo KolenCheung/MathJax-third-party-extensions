@@ -21,6 +21,8 @@ sed -i '' s/"unpacked\/"// physics.js
 # MultiMarkdown
 
 mmd test/macro.md
+mmd test/test-physics-js-unpacked.md
+mmd test/test-physics-js.md
 mmd index.md
 
 cp index.md temp.md
