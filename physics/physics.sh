@@ -26,7 +26,8 @@ mmd test/test-physics-js-unpacked.md
 mmd test/test-physics-js.md
 mmd index.md
 
-cp index.md temp.md
+cd $DIR/test/
+cp test-physics-latex.md temp.md
 mmd2pdf temp.md
-mv temp.pdf index.pdf
+mv temp.pdf test-physics-latex.pdf
 find . -iname 'temp.*' -exec mv '{}' ~/.Trash/ \;
