@@ -24,10 +24,10 @@ mmd test/macro.md
 mmd test/test-physics-js-mathjax-cdn.md
 mmd test/test-physics-js-unpacked.md
 mmd test/test-physics-js.md
-mmd index.md
+mmd index.mmd
 
 cd $DIR/test/
-cp test-physics-latex.md temp.md
+cp test-physics-latex.mmd temp.md
 mmd2pdf temp.md
 mv temp.pdf test-physics-latex.pdf
 find . -iname 'temp.*' -exec mv '{}' ~/.Trash/ \;
