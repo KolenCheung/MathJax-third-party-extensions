@@ -1,6 +1,5 @@
 #!/bin/bash
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd $DIR
+cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # uglify & beautify
 sed -i '' s/'\	'// test/macro.js
@@ -26,7 +25,7 @@ mmd test/test-physics-js-unpacked.md
 mmd test/test-physics-js.md
 mmd index.mmd
 
-cd $DIR/test/
+cd test/
 cp test-physics-latex.mmd temp.md
 mmd2pdf temp.md
 mv temp.pdf test-physics-latex.pdf
